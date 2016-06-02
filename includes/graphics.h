@@ -54,4 +54,5 @@ int						draw_line_3d(t_image *img, t_pos *start, t_pos *end,
 int						expose_hook(void *param);
 int						key_hook(int keycode, void *param);
 int						mouse_hook(int button, int x, int y, void *param);
+int						motion_hook(int x, int y, void *param);
 #endif

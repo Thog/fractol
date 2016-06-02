@@ -1,6 +1,6 @@
 #include "fractol.h"
 
-void					recompile_render(t_env *env)
+void			recompile_render(t_env *env)
 {
 	if (env->render && env->render->data)
 	{
@@ -47,8 +47,24 @@ int				key_hook(int keycode, void *param)
 {
 	t_env		*env;
 
-	env = (t_env*)param;
-	if (keycode == ESCAPE)
-		exit(destroy_env(env));
+	if (param)
+	{
+		env = (t_env*)param;
+		if (keycode == ESCAPE)
+			exit(destroy_env(env, 0));
+	}
+	return (env == NULL);
+}
+
+int				motion_hook(int x, int y, void *param)
+{
+	t_env		*env;
+
+	if (param)
+	{
+		env = (t_env*)param;
+		env->moveX = x / WIDTH;
+		env->moveY = y / HEIGHT;
+	}
 	return (env == NULL);
 }

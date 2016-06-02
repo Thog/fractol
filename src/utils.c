@@ -12,18 +12,26 @@ t_pos			*new_pos(int x, int y, int z)
 	return (result);
 }
 
-int				destroy_env(t_env *env)
+int				destroy_env(t_env *env, int exit_code)
 {
-	if (env->render)
+	if (env)
 	{
-		if (env->mlx)
+		if (env->render)
 		{
-			if (env->win)
-				mlx_destroy_window(env->mlx, env->win);
-			mlx_destroy_image(env->mlx, env->render->ptr);
+			if (env->mlx)
+			{
+				if (env->win)
+					mlx_destroy_window(env->mlx, env->win);
+				mlx_destroy_image(env->mlx, env->render->ptr);
+			}
+			ft_memdel((void*)&env->render);
 		}
+		ft_memdel((void*)&env);
 	}
-	ft_memdel((void*)&env->render);
-	ft_memdel((void*)&env);
-	return (EXIT_SUCCESS);
+	return (exit_code);
+}
+
+void					print_usage(char *prg)
+{
+	ft_printf_fd(2, "Usage: %s [type]\nType: julia, mandelbrot\n", prg);
 }

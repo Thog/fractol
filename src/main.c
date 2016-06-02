@@ -17,16 +17,21 @@ int			init_display(t_env *env)
 	mlx_key_hook(env->win, key_hook, env);
 	mlx_expose_hook(env->win, expose_hook, env);
 	mlx_mouse_hook(env->win, mouse_hook, env);
+	if (!ft_strcmp(env->type, "julia"))
+		mlx_hook(env->win, 6, (1L << 6), motion_hook, env);
 	return (0);
 }
 
 int			init_data(t_env *env, int ac, char **av)
 {
 	env->zoom = 1;
-	env->type = "julia";
-	env->data = init_fractal(env->type);
-	(void)ac;
-	(void)av;
+	if (ac == 2)
+	{
+		env->type = *(av + 1);
+		env->data = init_fractal(env->type);
+	}
+	if (env->data == NULL)
+		print_usage(*av);
 	return (env->data == NULL);
 }
 
@@ -35,9 +40,9 @@ int			main(int ac, char **av)
 	t_env	*env;
 
 	if (!(env = (t_env*)ft_memalloc(sizeof(t_env))) || init_data(env, ac, av))
-		return (1);
+		return (destroy_env(env, 1));
 	init_display(env);
 	recompile_render(env);
 	mlx_loop(env->mlx);
-	return (destroy_env(env));
+	return (destroy_env(env, 0));
 }
