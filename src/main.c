@@ -2,7 +2,7 @@
 
 static void *init_fractal(char *type)
 {
-	if (!ft_strcmp(type, "julia"))
+	if (!ft_strcmp(type, "julia") || !ft_strcmp(type, "mandelbrot"))
 		return ((void*)init_julia());
 	return (NULL);
 }

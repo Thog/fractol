@@ -3,10 +3,12 @@
 void			recompile_render(t_env *env)
 {
 	if (env->render && env->render->data)
-	{
 		ft_bzero(env->render->data, env->render->line_size * HEIGHT);
-	}
-	render_julia(env);
+
+	if (!ft_strcmp(env->type, "julia"))
+		render_julia(env);
+	else if (!ft_strcmp(env->type, "mandelbrot"))
+		render_mandelbrot(env);
 }
 
 int				mouse_hook(int button, int x, int y, void *param)
