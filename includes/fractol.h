@@ -36,6 +36,7 @@ t_julia					*init_julia(void);
 int						destroy_env(t_env *env, int exit_code);
 void					recompile_render(t_env *env);
 void 					compute_julia_pixel(t_env *e, int x, int y);
+int						ft_HSLtoHex(int h, float s, float l);
 void					render_julia(t_env *env);
 void 					render_mandelbrot(t_env *env);
 void					print_usage(char *prg);

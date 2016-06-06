@@ -10,7 +10,6 @@ t_julia			*init_julia(void)
 	result->cIm = 0.27015;
 	return (result);
 }
-
 void 				compute_julia_pixel(t_env *e, int x, int y)
 {
 	t_julia	*data;
@@ -18,7 +17,7 @@ void 				compute_julia_pixel(t_env *e, int x, int y)
 
 	data = (t_julia*)e->data;
 	i = -1;
-	while((++i) < 128)
+	while((++i) < 1024)
 	{
 		data->oldRe = data->newRe;
 		data->oldIm = data->newIm;
@@ -27,7 +26,7 @@ void 				compute_julia_pixel(t_env *e, int x, int y)
 		if((data->newRe * data->newRe + data->newIm * data->newIm) > 4)
 			break ;
 	}
-	set_pixel(e->render, x, y, RGB(i % 256, 255, 255 * (i < 128)));
+	set_pixel(e->render, x, y, ft_HSLtoHex(i % 360, 1, 0.5 * (i < 1024)));
 }
 void					render_julia(t_env *e)
 {
