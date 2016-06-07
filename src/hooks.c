@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hooks.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/06/07 13:44:04 by tguillem          #+#    #+#             */
+/*   Updated: 2016/06/07 15:10:21 by tguillem         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 void			recompile_render(t_env *env)
 {
 	if (env->render && env->render->data)
 		ft_bzero(env->render->data, env->render->line_size * HEIGHT);
-
 	if (!ft_strcmp(env->type, "julia"))
 		render_julia(env);
 	else if (!ft_strcmp(env->type, "mandelbrot"))
@@ -30,7 +41,7 @@ int				mouse_hook(int button, int x, int y, void *param)
 			expose_hook(param);
 		}
 	}
-	return (env == NULL);
+	return (param == NULL);
 }
 
 int				expose_hook(void *param)
@@ -55,7 +66,7 @@ int				key_hook(int keycode, void *param)
 		if (keycode == ESCAPE)
 			exit(destroy_env(env, 0));
 	}
-	return (env == NULL);
+	return (param == NULL);
 }
 
 int				motion_hook(int x, int y, void *param)
@@ -65,8 +76,8 @@ int				motion_hook(int x, int y, void *param)
 	if (param)
 	{
 		env = (t_env*)param;
-		env->moveX = x / WIDTH;
-		env->moveY = y / HEIGHT;
+		env->move_x = x / WIDTH;
+		env->move_y = y / HEIGHT;
 	}
-	return (env == NULL);
+	return (param == NULL);
 }

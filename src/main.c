@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/06/07 13:44:32 by tguillem          #+#    #+#             */
+/*   Updated: 2016/06/07 13:52:23 by tguillem         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
-static void *init_fractal(char *type)
+static void	*init_fractal(char *type)
 {
 	if (!ft_strcmp(type, "julia") || !ft_strcmp(type, "mandelbrot"))
 		return ((void*)init_julia());

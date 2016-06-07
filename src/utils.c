@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/06/07 13:44:50 by tguillem          #+#    #+#             */
+/*   Updated: 2016/06/07 13:51:41 by tguillem         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
-t_pos			*new_pos(int x, int y, int z)
+t_pos					*new_pos(int x, int y, int z)
 {
-	t_pos *result;
+	t_pos	*result;
 
 	if (!(result = (t_pos*)malloc(sizeof(t_pos))))
 		return (NULL);
@@ -12,7 +24,7 @@ t_pos			*new_pos(int x, int y, int z)
 	return (result);
 }
 
-int				destroy_env(t_env *env, int exit_code)
+int						destroy_env(t_env *env, int exit_code)
 {
 	if (env)
 	{
@@ -45,29 +57,28 @@ void					set_rgb(t_color *color, char red, char green,
 	color->alpha = 0;
 }
 
-int		ft_HSLtoHex(int h, float s, float l)
+int						ft_hsl_to_hex(int h, float s, float l)
 {
 	t_color		color;
-	float		C;
-	float		X;
+	float		c;
+	float		x;
 	float		m;
 
-	C = (1.0 - fabs(2 * l - 1.0)) * s;
-	X = C * (1.0 - fabs(fmod((h / 60.0), 2) - 1.0));
-	m = l - 0.5 * C;
-	//printf("C = %f, X = %f, m = %f\n", C, X, m);
+	c = (1.0 - fabs(2 * l - 1.0)) * s;
+	x = c * (1.0 - fabs(fmod((h / 60.0), 2) - 1.0));
+	m = l - 0.5 * c;
 	if (h >= 0 && h < 60)
-		set_rgb(&color, (C + m) * 255, (X + m) * 255, (0 + m) * 255);
+		set_rgb(&color, (c + m) * 255, (x + m) * 255, m * 255);
 	else if (h >= 60 && h < 120)
-		set_rgb(&color, (X + m) * 255, (C + m) * 255, (0 + m) * 255);
+		set_rgb(&color, (x + m) * 255, (c + m) * 255, m * 255);
 	else if (h >= 120 && h < 180)
-		set_rgb(&color, (0 + m) * 255, (C + m) * 255, (X + m) * 255);
+		set_rgb(&color, m * 255, (c + m) * 255, (x + m) * 255);
 	else if (h >= 180 && h < 240)
-		set_rgb(&color, (0 + m) * 255, (X + m) * 255, (C + m) * 255);
+		set_rgb(&color, m * 255, (x + m) * 255, (c + m) * 255);
 	else if (h >= 240 && h < 300)
-		set_rgb(&color, (X + m) * 255, (0 + m) * 255, (C + m) * 255);
+		set_rgb(&color, (x + m) * 255, m * 255, (c + m) * 255);
 	else if (h >= 300 && h < 360)
-		set_rgb(&color, (C + m) * 255, (0 + m) * 255, (X + m) * 255);
+		set_rgb(&color, (c + m) * 255, m * 255, (x + m) * 255);
 	else
 		set_rgb(&color, 255, 255, 255);
 	return (RGB(color.red, color.green, color.blue));

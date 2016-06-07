@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/27 11:02:53 by tguillem          #+#    #+#             */
-/*   Updated: 2016/05/27 13:15:33 by tguillem         ###   ########.fr       */
+/*   Created: 2016/06/07 13:44:59 by tguillem          #+#    #+#             */
+/*   Updated: 2016/06/07 13:55:30 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int					put_pixel(t_image *img, int x, int y, int color)
 	return (1);
 }
 
-int				draw_line_2d(t_image *img, t_pos *p1, t_pos *p2,
+int					draw_line_2d(t_image *img, t_pos *p1, t_pos *p2,
 	t_colorizer *colorizer)
 {
 	int i;
@@ -62,7 +62,7 @@ int				draw_line_2d(t_image *img, t_pos *p1, t_pos *p2,
 	return (nbr[2]);
 }
 
-int				draw_line_3d(t_image *img, t_pos *start, t_pos *end,
+int					draw_line_3d(t_image *img, t_pos *start, t_pos *end,
 	t_colorizer *colorizer)
 {
 	int		result;
