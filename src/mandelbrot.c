@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 13:44:28 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/07 15:11:12 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/08 18:29:27 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void		reset_parts(t_julia *data)
 {
-	data->old_re = 0;
-	data->old_im = 0;
-	data->new_re = 0;
-	data->new_im = 0;
+	data->prev_cx = 0;
+	data->prev_cy = 0;
+	data->cx = 0;
+	data->cy = 0;
 }
 
 void			render_mandelbrot(t_env *e)

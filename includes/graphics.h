@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/27 11:26:50 by tguillem          #+#    #+#             */
-/*   Updated: 2016/05/27 13:15:47 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/08 18:32:12 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 # include <mlx.h>
 # include <math.h>
 # include "libft.h"
-# define WIDTH 1366
-# define HEIGHT 768
+# define WIDTH 800
+# define HEIGHT 600
 # define ISO_C1 0.5F
 # define ISO_C2 0.5F
 # define PROJ_ISO_X(X, Y, Z) ISO_C1 * X - ISO_C2 * Y
 # define PROJ_ISO_Y(X, Y, Z) -Z + (ISO_C1 / 2) * X + (ISO_C2 / 2) * Y
-# define RGB(R, G, B) (R << 16) | (G << 8) | B
+# define RGB(R, G, B) ((R & 0xFF) << 16) | ((G & 0xFF) << 8) | (B & 0xFF)
 
 typedef int				(*t_transformer)(int x, int y, int z);
 typedef unsigned int	(*t_colorizer)(int iteration);
