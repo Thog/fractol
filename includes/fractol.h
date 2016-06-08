@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 13:56:10 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/07 15:09:39 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/08 17:48:54 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ typedef struct			s_env
 
 typedef struct			s_julia
 {
-	double				c_re;
-	double				c_im;
-	double				new_re;
-	double				new_im;
-	double				old_re;
-	double				old_im;
+	double				c_x;
+	double				c_y;
+	double				cx;
+	double				cy;
+	double				old_cx;
+	double				old_cy;
 }						t_julia;
 
 int						init_display(t_env *env);
