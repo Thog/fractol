@@ -77,11 +77,12 @@ int				motion_hook(int x, int y, void *param)
 {
 	t_env		*env;
 
-	if (param)
+	if (param && x <= WIDTH && y <= HEIGHT)
 	{
 		env = (t_env*)param;
-		env->move_x = x / WIDTH;
-		env->move_y = y / HEIGHT;
+		env->k = x * 0.003;
+		env->j = y * 0.003;
+		env->update = 1;
 	}
 	return (param == NULL);
 }

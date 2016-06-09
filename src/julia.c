@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <stdio.h>
 
 t_julia				*init_julia(void)
 {
@@ -18,8 +19,6 @@ t_julia				*init_julia(void)
 
 	if (!(result = (t_julia*)ft_memalloc(sizeof(t_julia))))
 		return (NULL);
-	result->c_re = -0.7;
-	result->c_im = 0.27015;
 	return (result);
 }
 
@@ -51,6 +50,8 @@ void				render_julia(t_env *e)
 
 	y = -1;
 	data = (t_julia*)e->data;
+	data->c_re = -0.8 + e->k;
+	data->c_im = 0.156 + e->j;
 	while ((++y) < HEIGHT)
 	{
 		x = -1;

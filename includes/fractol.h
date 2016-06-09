@@ -29,6 +29,8 @@ typedef struct			s_env
 	double				zoom;
 	double				move_x;
 	double				move_y;
+	double				k;
+	double				j;
 	int					update;
 }						t_env;
 
