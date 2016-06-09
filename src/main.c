@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 13:44:32 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/09 15:42:49 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/09 17:02:15 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int			init_display(t_env *env)
 	mlx_mouse_hook(env->win, mouse_hook, env);
 	if (!ft_strcmp(env->type, "julia"))
 		mlx_hook(env->win, 6, (1L << 6), motion_hook, env);
+	mlx_loop_hook(env->mlx, loop_hook, env);
 	return (0);
 }
 
@@ -68,7 +69,7 @@ int			main(int ac, char **av)
 	if (!(env = (t_env*)ft_memalloc(sizeof(t_env))) || init_data(env, ac, av))
 		return (destroy_env(env, 1));
 	init_display(env);
-	recompile_render(env);
+	env->update = 1;
 	mlx_loop(env->mlx);
 	return (destroy_env(env, 0));
 }

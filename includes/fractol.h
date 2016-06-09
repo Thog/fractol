@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 13:56:10 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/09 13:43:17 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/09 16:55:09 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct			s_env
 	double				zoom;
 	double				move_x;
 	double				move_y;
+	int					update;
 }						t_env;
 
 typedef struct			s_julia

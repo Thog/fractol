@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/27 11:26:50 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/08 18:32:12 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/09 16:53:35 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ int						expose_hook(void *param);
 int						key_hook(int keycode, void *param);
 int						mouse_hook(int button, int x, int y, void *param);
 int						motion_hook(int x, int y, void *param);
+int						loop_hook(void *param);
 #endif
