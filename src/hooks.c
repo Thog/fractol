@@ -6,23 +6,11 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 13:44:04 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/07 15:10:21 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/09 15:42:33 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-void			recompile_render(t_env *env)
-{
-	if (env->render && env->render->data)
-		ft_bzero(env->render->data, env->render->line_size * HEIGHT);
-	if (!ft_strcmp(env->type, "julia"))
-		render_julia(env);
-	else if (!ft_strcmp(env->type, "mandelbrot"))
-		render_mandelbrot(env);
-	else if (!ft_strcmp(env->type, "burningship"))
-		render_burningship(env);
-}
 
 int				mouse_hook(int button, int x, int y, void *param)
 {

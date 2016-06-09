@@ -6,7 +6,7 @@
 #    By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/02 17:03:41 by tguillem          #+#    #+#              #
-#    Updated: 2016/06/07 13:40:08 by tguillem         ###   ########.fr        #
+#    Updated: 2016/06/09 13:45:07 by tguillem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = gcc
 NAME = fractol
 LIB = libft
 SRC = main.c hooks.c image.c graphics.c utils.c mandelbrot.c julia.c \
-		burningship.c
+	  burningship.c
 SRCDIR = src
 OUTDIR = out
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))

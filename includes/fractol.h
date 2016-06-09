@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 13:56:10 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/08 18:30:07 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/09 13:43:17 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void					render_julia(t_env *env);
 void					render_mandelbrot(t_env *env);
 void					print_usage(char *prg);
 t_julia					*init_burningshop(void);
-void 					render_burningship(t_env *env);
+void					render_burningship(t_env *env);
 void					reset_parts(t_julia *data);
 #endif

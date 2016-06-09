@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 13:44:23 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/08 18:29:27 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/08 18:42:50 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void				compute_julia_pixel(t_env *e, int x, int y)
 
 	data = (t_julia*)e->data;
 	i = -1;
-	while ((++i) < 1024)
+	while ((++i) < 128)
 	{
 		data->prev_cx = data->cx;
 		data->prev_cy = data->cy;
@@ -40,7 +40,7 @@ void				compute_julia_pixel(t_env *e, int x, int y)
 		if ((data->cx * data->cx + data->cy * data->cy) > 4)
 			break ;
 	}
-	set_pixel(e->render, x, y, ft_hsl_to_hex(i % 360, 1, 0.5 * (i < 1024)));
+	set_pixel(e->render, x, y, ft_hsl_to_hex(i % 360, 1, 0.5 * (i < 128)));
 }
 
 void				render_julia(t_env *e)

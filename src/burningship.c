@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   burningship.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/06/09 13:42:31 by tguillem          #+#    #+#             */
+/*   Updated: 2016/06/09 14:45:08 by tguillem         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 t_julia				*init_burningshop(void)
@@ -18,7 +30,7 @@ void				compute_burningship_pixel(t_env *e, int x, int y)
 
 	data = (t_julia*)e->data;
 	i = -1;
-	while ((++i) < 1024)
+	while ((++i) < 128)
 	{
 		data->prev_cx = data->cx;
 		data->prev_cy = data->cy;
@@ -28,10 +40,10 @@ void				compute_burningship_pixel(t_env *e, int x, int y)
 		if ((data->cx * data->cx + data->cy * data->cy) > 4)
 			break ;
 	}
-	set_pixel(e->render, x, y, ft_hsl_to_hex(i % 360, 1, 0.5 * (i < 1024)));
+	set_pixel(e->render, x, y, ft_hsl_to_hex(i % 360, 1, 0.5 * (i < 128)));
 }
 
-void 				render_burningship(t_env *e)
+void				render_burningship(t_env *e)
 {
 	int		x;
 	int		y;
@@ -44,9 +56,9 @@ void 				render_burningship(t_env *e)
 		x = -1;
 		while ((++x) < WIDTH)
 		{
-			data->c_re = 1.5 * (x - WIDTH / 2) / (0.5 * e->zoom * WIDTH);
+			data->c_re = 1.5 * (x - WIDTH / 2) / (0.5 * e->zoom * WIDTH) - 0.45;
 			data->c_re += e->move_x;
-			data->c_im = (y - HEIGHT / 2) / (0.5 * e->zoom * HEIGHT) - 0.25;
+			data->c_im = (y - HEIGHT / 2) / (0.5 * e->zoom * HEIGHT) - 0.52;
 			data->c_im += e->move_y;
 			reset_parts(data);
 			compute_burningship_pixel(e, x, y);
