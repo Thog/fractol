@@ -16,7 +16,8 @@ CC = gcc
 
 NAME = fractol
 LIB = libft
-SRC = main.c hooks.c image.c graphics.c utils.c mandelbrot.c julia.c
+SRC = main.c hooks.c image.c graphics.c utils.c mandelbrot.c julia.c \
+		burningship.c
 SRCDIR = src
 OUTDIR = out
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))

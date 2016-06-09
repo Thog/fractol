@@ -51,5 +51,7 @@ int						ft_hsl_to_hex(int h, float s, float l);
 void					render_julia(t_env *env);
 void					render_mandelbrot(t_env *env);
 void					print_usage(char *prg);
-
+t_julia					*init_burningshop(void);
+void 					render_burningship(t_env *env);
+void					reset_parts(t_julia *data);
 #endif

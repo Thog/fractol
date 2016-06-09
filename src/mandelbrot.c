@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-static void		reset_parts(t_julia *data)
+void			reset_parts(t_julia *data)
 {
 	data->prev_cx = 0;
 	data->prev_cy = 0;

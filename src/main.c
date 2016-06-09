@@ -16,6 +16,8 @@ static void	*init_fractal(char *type)
 {
 	if (!ft_strcmp(type, "julia") || !ft_strcmp(type, "mandelbrot"))
 		return ((void*)init_julia());
+	else if (!ft_strcmp(type, "burningship"))
+		return ((void*)init_burningshop());
 	return (NULL);
 }
 

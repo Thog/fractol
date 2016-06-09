@@ -45,7 +45,8 @@ int						destroy_env(t_env *env, int exit_code)
 
 void					print_usage(char *prg)
 {
-	ft_printf_fd(2, "Usage: %s [type]\nType: julia, mandelbrot\n", prg);
+	ft_printf_fd(2, "Usage: %s [type]\nType: julia, mandelbrot, burningship\n",
+		prg);
 }
 
 void					set_rgb(t_color *color, char red, char green,

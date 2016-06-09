@@ -1,0 +1,55 @@
+#include "fractol.h"
+
+t_julia				*init_burningshop(void)
+{
+	t_julia		*result;
+
+	if (!(result = (t_julia*)ft_memalloc(sizeof(t_julia))))
+		return (NULL);
+	result->c_re = -2.5;
+	result->c_im = 2.5;
+	return (result);
+}
+
+void				compute_burningship_pixel(t_env *e, int x, int y)
+{
+	t_julia	*data;
+	int		i;
+
+	data = (t_julia*)e->data;
+	i = -1;
+	while ((++i) < 1024)
+	{
+		data->prev_cx = data->cx;
+		data->prev_cy = data->cy;
+		data->cx = data->prev_cx * data->prev_cx - data->prev_cy
+			* data->prev_cy + data->c_re;
+		data->cy = 2 * fabs(data->prev_cx * data->prev_cy) + data->c_im;
+		if ((data->cx * data->cx + data->cy * data->cy) > 4)
+			break ;
+	}
+	set_pixel(e->render, x, y, ft_hsl_to_hex(i % 360, 1, 0.5 * (i < 1024)));
+}
+
+void 				render_burningship(t_env *e)
+{
+	int		x;
+	int		y;
+	t_julia	*data;
+
+	y = -1;
+	data = (t_julia*)e->data;
+	while ((++y) < HEIGHT)
+	{
+		x = -1;
+		while ((++x) < WIDTH)
+		{
+			data->c_re = 1.5 * (x - WIDTH / 2) / (0.5 * e->zoom * WIDTH);
+			data->c_re += e->move_x;
+			data->c_im = (y - HEIGHT / 2) / (0.5 * e->zoom * HEIGHT) - 0.25;
+			data->c_im += e->move_y;
+			reset_parts(data);
+			compute_burningship_pixel(e, x, y);
+		}
+	}
+}

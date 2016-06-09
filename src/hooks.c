@@ -20,6 +20,8 @@ void			recompile_render(t_env *env)
 		render_julia(env);
 	else if (!ft_strcmp(env->type, "mandelbrot"))
 		render_mandelbrot(env);
+	else if (!ft_strcmp(env->type, "burningship"))
+		render_burningship(env);
 }
 
 int				mouse_hook(int button, int x, int y, void *param)
