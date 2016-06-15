@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <stdio.h>
 
 int				mouse_hook(int button, int x, int y, void *param)
 {
@@ -27,8 +28,8 @@ int				mouse_hook(int button, int x, int y, void *param)
 			env->zoom -= 1;
 		if (old_zoom != env->zoom)
 		{
-			env->move_x = env->zoom > 1 ? (env->move_x + x - (WIDTH / 2)) : 0;
-			env->move_y = env->zoom > 1 ? (env->move_y + y - (HEIGHT / 2)) : 0;
+			env->move_x = env->zoom > 1 ? env->move_x + (1.5 * (((double)x / WIDTH) - 0.5) / (env->zoom - 1)) : 0;
+			env->move_y = env->zoom > 1 ? env->move_y + (((double)y / HEIGHT) - 0.5) / (env->zoom - 1) : 0;
 			env->update = 1;
 		}
 	}

@@ -30,7 +30,7 @@ void				compute_burningship_pixel(t_env *e, int x, int y)
 
 	data = (t_julia*)e->data;
 	i = -1;
-	while ((++i) < 128)
+	while ((++i) < 512)
 	{
 		data->prev_cx = data->cx;
 		data->prev_cy = data->cy;
@@ -40,7 +40,7 @@ void				compute_burningship_pixel(t_env *e, int x, int y)
 		if ((data->cx * data->cx + data->cy * data->cy) > 4)
 			break ;
 	}
-	set_pixel(e->render, x, y, ft_hsl_to_hex(i % 360, 1, 0.5 * (i < 128)));
+	put_pixel(e->render, x, y, ft_hsl_to_hex(i % 360, 1, 0.5 * (i < 512)));
 }
 
 void				render_burningship(t_env *e)
@@ -57,9 +57,9 @@ void				render_burningship(t_env *e)
 		while ((++x) < WIDTH)
 		{
 			data->c_re = 1.5 * (x - WIDTH / 2) / (0.5 * e->zoom * WIDTH) - 0.45;
-			data->c_re += e->move_x;
+			data->c_re += 2 * e->move_x;
 			data->c_im = (y - HEIGHT / 2) / (0.5 * e->zoom * HEIGHT) - 0.52;
-			data->c_im += e->move_y;
+			data->c_im += 2 * e->move_y;
 			reset_parts(data);
 			compute_burningship_pixel(e, x, y);
 		}

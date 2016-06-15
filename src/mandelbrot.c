@@ -33,8 +33,8 @@ void			render_mandelbrot(t_env *e)
 		x = -1;
 		while ((++x) < WIDTH)
 		{
-			data->c_re = 1.5 * (x - WIDTH / 2 + (e->move_x * e->zoom)) / (0.5 * e->zoom * WIDTH);
-			data->c_im = (y - HEIGHT / 2 + (e->move_y * e->zoom)) / (0.5 * e->zoom * HEIGHT);
+			data->c_re = 1.5 * (x - WIDTH / 2) / (0.5 * e->zoom * WIDTH) + (2 * e->move_x);
+			data->c_im = (y - HEIGHT / 2) / (0.5 * e->zoom * HEIGHT) + (2 * e->move_y);
 			reset_parts(data);
 			compute_julia_pixel(e, x, y);
 		}
