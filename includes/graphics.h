@@ -54,9 +54,11 @@ typedef struct			s_color
 
 t_pos					*new_pos(int x, int y, int z);
 t_image					*new_img(void *mlx, int width, int height);
+int						put_pixel(t_image *img, int x, int y,
+	unsigned int color);
 void					set_pixel(t_image *img, int x, int y,
 	unsigned int color);
-int						draw_line_d(t_image *img, t_pos *start, t_pos *end,
+int						draw_line_2d(t_image *img, t_pos *start, t_pos *end,
 	t_colorizer *colorizer);
 int						draw_line_3d(t_image *img, t_pos *start, t_pos *end,
 	t_colorizer *colorizer);

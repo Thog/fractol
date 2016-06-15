@@ -26,7 +26,7 @@ void				draw_line1(int nbr[2], int error[2], t_pos *p2, int n)
 	}
 }
 
-int					put_pixel(t_image *img, int x, int y, int color)
+int					put_pixel(t_image *img, int x, int y, unsigned int color)
 {
 	if (!img || x < 0 || x >= img->width || y < 0 || y >= img->height)
 		return (0);

@@ -39,7 +39,7 @@ void				compute_julia_pixel(t_env *e, int x, int y)
 		if ((data->cx * data->cx + data->cy * data->cy) > 4)
 			break ;
 	}
-	set_pixel(e->render, x, y, ft_hsl_to_hex(i % 360, 1, 0.5 * (i < 128)));
+	put_pixel(e->render, x, y, ((x == WIDTH / 2 && y % 4) || (y == HEIGHT / 2 && x % 4)) ? 0xFFFFFF : ft_hsl_to_hex(i % 360, 1, 0.5 * (i < 128)));
 }
 
 void				render_julia(t_env *e)
@@ -57,10 +57,8 @@ void				render_julia(t_env *e)
 		x = -1;
 		while ((++x) < WIDTH)
 		{
-			data->cx = 1.5 * (x - WIDTH / 2) / (0.5 * e->zoom * WIDTH);
-			data->cx += e->move_x;
-			data->cy = (y - HEIGHT / 2) / (0.5 * e->zoom * HEIGHT);
-			data->cy += e->move_y;
+			data->cx = 1.5 * (x + e->move_x - WIDTH / 2) / (0.5 * e->zoom * WIDTH);
+			data->cy = (y + e->move_y - HEIGHT / 2) / (0.5 * e->zoom * HEIGHT);
 			compute_julia_pixel(e, x, y);
 		}
 	}

@@ -26,7 +26,11 @@ int				mouse_hook(int button, int x, int y, void *param)
 		else if ((button == 4 || button == 2) && env->zoom > 1)
 			env->zoom -= 1;
 		if (old_zoom != env->zoom)
+		{
+			env->move_x = env->zoom > 1 ? (env->move_x + x - (WIDTH / 2)) : 0;
+			env->move_y = env->zoom > 1 ? (env->move_y + y - (HEIGHT / 2)) : 0;
 			env->update = 1;
+		}
 	}
 	return (param == NULL);
 }

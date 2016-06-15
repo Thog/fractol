@@ -40,6 +40,8 @@ int			init_display(t_env *env)
 int			init_data(t_env *env, int ac, char **av)
 {
 	env->zoom = 1;
+	env->move_x = 0;
+	env->move_y = 0;
 	if (ac == 2)
 	{
 		env->type = *(av + 1);
