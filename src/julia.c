@@ -57,8 +57,8 @@ void				render_julia(t_env *e)
 		x = -1;
 		while ((++x) < WIDTH)
 		{
-			data->cx = 1.5 * (x + e->move_x - WIDTH / 2) / (0.5 * e->zoom * WIDTH);
-			data->cy = (y + e->move_y - HEIGHT / 2) / (0.5 * e->zoom * HEIGHT);
+			data->cx = 1.5 * (x - WIDTH / 2) / (0.5 * e->zoom * WIDTH) + (2 * e->move_x);
+			data->cy = (y - HEIGHT / 2) / (0.5 * e->zoom * HEIGHT) + (2 * e->move_y);
 			compute_julia_pixel(e, x, y);
 		}
 	}

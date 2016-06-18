@@ -56,10 +56,8 @@ void				render_burningship(t_env *e)
 		x = -1;
 		while ((++x) < WIDTH)
 		{
-			data->c_re = 1.5 * (x - WIDTH / 2) / (0.5 * e->zoom * WIDTH) - 0.45;
-			data->c_re += 2 * e->move_x;
-			data->c_im = (y - HEIGHT / 2) / (0.5 * e->zoom * HEIGHT) - 0.52;
-			data->c_im += 2 * e->move_y;
+			data->c_re = 1.5 * (x - WIDTH / 2) / (0.5 * e->zoom * WIDTH) + (2 * e->move_x) - 0.45;
+			data->c_im = (y - HEIGHT / 2) / (0.5 * e->zoom * HEIGHT) + (2 * e->move_y) - 0.52;
 			reset_parts(data);
 			compute_burningship_pixel(e, x, y);
 		}
