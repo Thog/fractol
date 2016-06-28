@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 13:44:28 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/08 18:29:27 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/28 15:33:01 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ void			render_mandelbrot(t_env *e)
 		x = -1;
 		while ((++x) < WIDTH)
 		{
-			data->c_re = 1.5 * (x - WIDTH / 2) / (0.5 * e->zoom * WIDTH) + (2 * e->move_x);
-			data->c_im = (y - HEIGHT / 2) / (0.5 * e->zoom * HEIGHT) + (2 * e->move_y);
+			data->c_re = 1.5 * (x - WIDTH / 2) / (0.5 * e->zoom * WIDTH)
+				+ (2 * e->move_x);
+			data->c_im = (y - HEIGHT / 2) / (0.5 * e->zoom * HEIGHT)
+				+ (2 * e->move_y);
 			reset_parts(data);
 			compute_julia_pixel(e, x, y);
 		}

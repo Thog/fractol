@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/09 13:42:31 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/09 14:45:08 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/28 15:34:15 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ void				render_burningship(t_env *e)
 		x = -1;
 		while ((++x) < WIDTH)
 		{
-			data->c_re = 1.5 * (x - WIDTH / 2) / (0.5 * e->zoom * WIDTH) + (2 * e->move_x) - 0.45;
-			data->c_im = (y - HEIGHT / 2) / (0.5 * e->zoom * HEIGHT) + (2 * e->move_y) - 0.52;
+			data->c_re = 1.5 * (x - WIDTH / 2) / (0.5 * e->zoom * WIDTH)
+				+ (2 * e->move_x) - 0.45;
+			data->c_im = (y - HEIGHT / 2) / (0.5 * e->zoom * HEIGHT)
+				+ (2 * e->move_y) - 0.52;
 			reset_parts(data);
 			compute_burningship_pixel(e, x, y);
 		}

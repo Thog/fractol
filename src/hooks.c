@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 13:44:04 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/09 16:57:33 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/28 15:31:59 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ int				mouse_hook(int button, int x, int y, void *param)
 			env->zoom -= 1;
 		if (old_zoom != env->zoom)
 		{
-			env->move_x = env->zoom > 1 ? env->move_x + (1.5 * (((double)x / WIDTH) - 0.5) / (env->zoom - 1)) : 0;
-			env->move_y = env->zoom > 1 ? env->move_y + (((double)y / HEIGHT) - 0.5) / (env->zoom - 1) : 0;
+			env->move_x = env->zoom > 1 ? env->move_x
+				+ (1.5 * (((double)x / WIDTH) - 0.5) / (env->zoom - 1)) : 0;
+			env->move_y = env->zoom > 1 ? env->move_y
+				+ (((double)y / HEIGHT) - 0.5) / (env->zoom - 1) : 0;
 			env->update = 1;
 		}
 	}

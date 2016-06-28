@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 13:44:32 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/09 17:02:15 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/28 15:32:41 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int			init_data(t_env *env, int ac, char **av)
 	return (env->data == NULL);
 }
 
-void			recompile_render(t_env *env)
+void		recompile_render(t_env *env)
 {
 	if (env->render && env->render->data)
 		ft_bzero(env->render->data, env->render->line_size * HEIGHT);

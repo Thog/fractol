@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 13:44:23 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/08 18:42:50 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/28 15:31:33 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void				compute_julia_pixel(t_env *e, int x, int y)
 		if ((data->cx * data->cx + data->cy * data->cy) > 4)
 			break ;
 	}
-	put_pixel(e->render, x, y, ((x == WIDTH / 2 && y % 4) || (y == HEIGHT / 2 && x % 4)) ? 0xFFFFFF : ft_hsl_to_hex(i % 360, 1, 0.5 * (i < 128)));
+	put_pixel(e->render, x, y, ft_hsl_to_hex(i % 360, 1, 0.5 * (i < 128)));
 }
 
 void				render_julia(t_env *e)
@@ -57,8 +57,10 @@ void				render_julia(t_env *e)
 		x = -1;
 		while ((++x) < WIDTH)
 		{
-			data->cx = 1.5 * (x - WIDTH / 2) / (0.5 * e->zoom * WIDTH) + (2 * e->move_x);
-			data->cy = (y - HEIGHT / 2) / (0.5 * e->zoom * HEIGHT) + (2 * e->move_y);
+			data->cx = 1.5 * (x - WIDTH / 2) / (0.5 * e->zoom * WIDTH)
+				+ (2 * e->move_x);
+			data->cy = (y - HEIGHT / 2) / (0.5 * e->zoom * HEIGHT)
+				+ (2 * e->move_y);
 			compute_julia_pixel(e, x, y);
 		}
 	}
