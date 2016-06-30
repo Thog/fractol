@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 13:44:32 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/30 15:23:12 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/30 15:35:27 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int			init_display(t_env *env)
 
 int			init_data(t_env *env, int ac, char **av)
 {
+	env->locked = 0;
 	env->zoom = 1;
 	env->move_x = 0;
 	env->move_y = 0;

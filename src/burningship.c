@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/09 13:42:31 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/30 15:25:19 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/30 16:22:36 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_fractal			*init_burningshop(void)
 		return (NULL);
 	result->c_re = -2.5;
 	result->c_im = 2.5;
+	result->iteration_max = 512;
 	return (result);
 }
 
@@ -27,10 +28,12 @@ void				compute_burningship_pixel(t_env *e, int x, int y)
 {
 	t_fractal	*data;
 	int			i;
+	int			it_max;
 
-	data = (t_fractal*)e->data;
+	data = e->data;
+	it_max = data->iteration_max;
 	i = -1;
-	while ((++i) < 512)
+	while ((++i) < it_max)
 	{
 		data->prev_cx = data->cx;
 		data->prev_cy = data->cy;
@@ -40,7 +43,7 @@ void				compute_burningship_pixel(t_env *e, int x, int y)
 		if ((data->cx * data->cx + data->cy * data->cy) > 4)
 			break ;
 	}
-	put_pixel(e->render, x, y, ft_hsl_to_hex(i % 360, 1, 0.5 * (i < 512)));
+	put_pixel(e->render, x, y, ft_hsl_to_hex(i % 360, 1, 0.5 * (i < it_max)));
 }
 
 void				render_burningship(t_env *e)

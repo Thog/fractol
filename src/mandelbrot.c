@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 13:44:28 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/30 15:25:36 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/30 16:22:31 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void			render_mandelbrot(t_env *e)
 	t_fractal	*data;
 
 	y = -1;
-	data = (t_fractal*)e->data;
+	data = e->data;
 	while ((++y) < HEIGHT)
 	{
 		x = -1;

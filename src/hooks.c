@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 13:44:04 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/28 15:31:59 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/30 16:37:05 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,26 @@ int				expose_hook(void *param)
 int				key_hook(int keycode, void *param)
 {
 	t_env		*env;
+	int			iteration_modifier;
 
 	if (param)
 	{
+		iteration_modifier = (keycode == NUM_MINUS ? -1 : keycode == NUM_PLUS);
 		env = (t_env*)param;
-		if (keycode == ESCAPE)
+		if (iteration_modifier)
+		{
+			if (iteration_modifier == 1)
+				env->data->iteration_max *= 2;
+			else
+				env->data->iteration_max /= 2;
+			if (env->data->iteration_max == 0)
+				env->data->iteration_max = 1;
+			env->update = 1;
+		}
+		else if (keycode == ESCAPE)
 			exit(destroy_env(env, 0));
+		else if (keycode == SPACE)
+			env->locked = !env->locked;
 	}
 	return (param == NULL);
 }
@@ -87,9 +101,12 @@ int				motion_hook(int x, int y, void *param)
 	if (param && x <= WIDTH && y <= HEIGHT)
 	{
 		env = (t_env*)param;
-		env->k = x * 0.003;
-		env->j = y * 0.003;
-		env->update = 1;
+		if (!env->locked)
+		{
+			env->k = x * 0.003;
+			env->j = y * 0.003;
+			env->update = 1;
+		}
 	}
 	return (param == NULL);
 }

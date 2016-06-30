@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 13:44:23 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/30 15:25:52 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/30 16:22:16 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_fractal			*init_julia(void)
 
 	if (!(result = (t_fractal*)ft_memalloc(sizeof(t_fractal))))
 		return (NULL);
+	result->iteration_max = 256;
 	return (result);
 }
 
@@ -26,10 +27,12 @@ void				compute_julia_pixel(t_env *e, int x, int y)
 {
 	t_fractal	*data;
 	int			i;
+	int			it_max;
 
 	data = (t_fractal*)e->data;
+	it_max = data->iteration_max;
 	i = -1;
-	while ((++i) < 128)
+	while ((++i) < it_max)
 	{
 		data->prev_cx = data->cx;
 		data->prev_cy = data->cy;
@@ -39,7 +42,7 @@ void				compute_julia_pixel(t_env *e, int x, int y)
 		if ((data->cx * data->cx + data->cy * data->cy) > 4)
 			break ;
 	}
-	put_pixel(e->render, x, y, ft_hsl_to_hex(i % 360, 1, 0.5 * (i < 128)));
+	put_pixel(e->render, x, y, ft_hsl_to_hex(i % 360, 1, 0.5 * (i < it_max)));
 }
 
 void				render_julia(t_env *e)
@@ -49,7 +52,7 @@ void				render_julia(t_env *e)
 	t_fractal	*data;
 
 	y = -1;
-	data = (t_fractal*)e->data;
+	data = e->data;
 	data->c_re = -0.8 + e->k;
 	data->c_im = 0.156 + e->j;
 	while ((++y) < HEIGHT)
