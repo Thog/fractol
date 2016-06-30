@@ -6,13 +6,13 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 13:44:28 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/28 15:33:01 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/30 15:25:36 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void			reset_parts(t_julia *data)
+void			reset_parts(t_fractal *data)
 {
 	data->prev_cx = 0;
 	data->prev_cy = 0;
@@ -22,12 +22,12 @@ void			reset_parts(t_julia *data)
 
 void			render_mandelbrot(t_env *e)
 {
-	int		x;
-	int		y;
-	t_julia	*data;
+	int			x;
+	int			y;
+	t_fractal	*data;
 
 	y = -1;
-	data = (t_julia*)e->data;
+	data = (t_fractal*)e->data;
 	while ((++y) < HEIGHT)
 	{
 		x = -1;

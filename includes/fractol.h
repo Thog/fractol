@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 13:56:10 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/09 16:55:09 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/30 15:23:29 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct			s_env
 	int					update;
 }						t_env;
 
-typedef struct			s_julia
+typedef struct			s_fractal
 {
 	double				c_re;
 	double				c_im;
@@ -42,11 +42,11 @@ typedef struct			s_julia
 	double				cy;
 	double				prev_cx;
 	double				prev_cy;
-}						t_julia;
+}						t_fractal;
 
 int						init_display(t_env *env);
 int						init_data(t_env *env, int ac, char **av);
-t_julia					*init_julia(void);
+t_fractal				*init_julia(void);
 int						destroy_env(t_env *env, int exit_code);
 void					recompile_render(t_env *env);
 void					compute_julia_pixel(t_env *e, int x, int y);
@@ -54,7 +54,7 @@ int						ft_hsl_to_hex(int h, float s, float l);
 void					render_julia(t_env *env);
 void					render_mandelbrot(t_env *env);
 void					print_usage(char *prg);
-t_julia					*init_burningshop(void);
+t_fractal				*init_burningshop(void);
 void					render_burningship(t_env *env);
-void					reset_parts(t_julia *data);
+void					reset_parts(t_fractal *data);
 #endif

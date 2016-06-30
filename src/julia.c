@@ -6,28 +6,28 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/07 13:44:23 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/28 15:31:33 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/30 15:25:52 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <stdio.h>
 
-t_julia				*init_julia(void)
+t_fractal			*init_julia(void)
 {
-	t_julia		*result;
+	t_fractal		*result;
 
-	if (!(result = (t_julia*)ft_memalloc(sizeof(t_julia))))
+	if (!(result = (t_fractal*)ft_memalloc(sizeof(t_fractal))))
 		return (NULL);
 	return (result);
 }
 
 void				compute_julia_pixel(t_env *e, int x, int y)
 {
-	t_julia	*data;
-	int		i;
+	t_fractal	*data;
+	int			i;
 
-	data = (t_julia*)e->data;
+	data = (t_fractal*)e->data;
 	i = -1;
 	while ((++i) < 128)
 	{
@@ -44,12 +44,12 @@ void				compute_julia_pixel(t_env *e, int x, int y)
 
 void				render_julia(t_env *e)
 {
-	int		x;
-	int		y;
-	t_julia	*data;
+	int			x;
+	int			y;
+	t_fractal	*data;
 
 	y = -1;
-	data = (t_julia*)e->data;
+	data = (t_fractal*)e->data;
 	data->c_re = -0.8 + e->k;
 	data->c_im = 0.156 + e->j;
 	while ((++y) < HEIGHT)

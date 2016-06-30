@@ -6,17 +6,17 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/09 13:42:31 by tguillem          #+#    #+#             */
-/*   Updated: 2016/06/28 15:34:15 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/06/30 15:25:19 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_julia				*init_burningshop(void)
+t_fractal			*init_burningshop(void)
 {
-	t_julia		*result;
+	t_fractal		*result;
 
-	if (!(result = (t_julia*)ft_memalloc(sizeof(t_julia))))
+	if (!(result = (t_fractal*)ft_memalloc(sizeof(t_fractal))))
 		return (NULL);
 	result->c_re = -2.5;
 	result->c_im = 2.5;
@@ -25,10 +25,10 @@ t_julia				*init_burningshop(void)
 
 void				compute_burningship_pixel(t_env *e, int x, int y)
 {
-	t_julia	*data;
-	int		i;
+	t_fractal	*data;
+	int			i;
 
-	data = (t_julia*)e->data;
+	data = (t_fractal*)e->data;
 	i = -1;
 	while ((++i) < 512)
 	{
@@ -45,12 +45,12 @@ void				compute_burningship_pixel(t_env *e, int x, int y)
 
 void				render_burningship(t_env *e)
 {
-	int		x;
-	int		y;
-	t_julia	*data;
+	int			x;
+	int			y;
+	t_fractal	*data;
 
 	y = -1;
-	data = (t_julia*)e->data;
+	data = (t_fractal*)e->data;
 	while ((++y) < HEIGHT)
 	{
 		x = -1;
